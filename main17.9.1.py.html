@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>main17.9.1.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #808080;}
+.s4 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main17.9.1.py</font>
+</center></td></tr></table>
+<pre><span class="s0">def </span><span class="s1">binary_search(arr</span><span class="s0">, </span><span class="s1">target):</span>
+    <span class="s1">left = </span><span class="s2">0</span>
+    <span class="s1">right = len(arr) - </span><span class="s2">1</span>
+    <span class="s1">position = len(arr)</span>
+
+    <span class="s0">while </span><span class="s1">left &lt;= right:</span>
+        <span class="s1">mid = (left + right) // </span><span class="s2">2</span>
+        <span class="s0">if </span><span class="s1">arr[mid] &gt;= target:</span>
+            <span class="s1">position = mid</span>
+            <span class="s1">right = mid - </span><span class="s2">1</span>
+        <span class="s0">else</span><span class="s1">:</span>
+            <span class="s1">left = mid + </span><span class="s2">1</span>
+
+    <span class="s0">return </span><span class="s1">position</span>
+
+
+<span class="s0">def </span><span class="s1">insertion_sort(arr):</span>
+    <span class="s0">for </span><span class="s1">i </span><span class="s0">in </span><span class="s1">range(</span><span class="s2">1</span><span class="s0">, </span><span class="s1">len(arr)):</span>
+        <span class="s1">key = arr[i]</span>
+        <span class="s1">j = i - </span><span class="s2">1</span>
+        <span class="s0">while </span><span class="s1">j &gt;= </span><span class="s2">0 </span><span class="s0">and </span><span class="s1">arr[j] &gt; key:</span>
+            <span class="s1">arr[j + </span><span class="s2">1</span><span class="s1">] = arr[j]</span>
+            <span class="s1">j -= </span><span class="s2">1</span>
+        <span class="s1">arr[j + </span><span class="s2">1</span><span class="s1">] = key</span>
+
+
+<span class="s3"># Ввод последовательности чисел и целевого числа</span>
+<span class="s1">sequence = input(</span><span class="s4">&quot;Введите последовательность чисел через пробел: &quot;</span><span class="s1">).split()</span>
+<span class="s1">target = int(input(</span><span class="s4">&quot;Введите целевое число: &quot;</span><span class="s1">))</span>
+
+<span class="s3"># Преобразование последовательности в список целых чисел</span>
+<span class="s1">sequence = [int(num) </span><span class="s0">for </span><span class="s1">num </span><span class="s0">in </span><span class="s1">sequence]</span>
+
+<span class="s3"># Сортировка списка</span>
+<span class="s1">insertion_sort(sequence)</span>
+
+<span class="s3"># Поиск позиции для целевого числа</span>
+<span class="s1">position = binary_search(sequence</span><span class="s0">, </span><span class="s1">target)</span>
+
+<span class="s3"># Вывод результата</span>
+<span class="s0">if </span><span class="s1">position &lt; len(sequence):</span>
+    <span class="s1">print(</span><span class="s4">&quot;Позиция элемента:&quot;</span><span class="s0">, </span><span class="s1">position)</span>
+    <span class="s1">print(</span><span class="s4">&quot;Значение элемента:&quot;</span><span class="s0">, </span><span class="s1">sequence[position])</span>
+<span class="s0">else</span><span class="s1">:</span>
+    <span class="s1">print(</span><span class="s4">&quot;Целевое число больше всех элементов в последовательности&quot;</span><span class="s1">)</span>
+</pre>
+</body>
+</html>
